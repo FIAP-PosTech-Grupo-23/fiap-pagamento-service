@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "e80f2d72-ef24-4ef4-8872-b0755507ae90",
+		"name": "FIAP Pagamento Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37186886"
+	},
+	"item": [
+		{
+			"name": "Request new payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valorTotal\": 1000.00,\r\n    \"pagamento\": {\r\n        \"numeroCartao\": \"1234\",\r\n        \"cvv\": \"123\",\r\n        \"dataVencimento\": \"05/2030\"\r\n    },\r\n    \"nome\": \"Luis\",\r\n    \"cpf\": \"123\",\r\n    \"endereco\": \"Rua FIAP\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/pagamentos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"pagamentos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Process payment by external system ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8085/pagamentos/491c8e2c-344b-44b9-8ba6-6ac0518b0aab",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"pagamentos",
+						"491c8e2c-344b-44b9-8ba6-6ac0518b0aab"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
