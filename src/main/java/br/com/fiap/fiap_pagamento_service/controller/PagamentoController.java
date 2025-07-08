@@ -26,7 +26,7 @@ public class PagamentoController {
     }
 
     @PutMapping("/{idSistemaExterno}")
-    public ResponseEntity<Void> processarPagamento(@PathVariable("idSistemaExterno") String idSistemaExterno) {
+    public ResponseEntity<Void> processarPagamento(@PathVariable String idSistemaExterno) {
         processarPagamentoUseCase.processar(UUID.fromString(idSistemaExterno));
         return ResponseEntity.ok().build();
     }
