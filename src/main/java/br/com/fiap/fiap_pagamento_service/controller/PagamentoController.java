@@ -21,7 +21,13 @@ public class PagamentoController {
 
     @PostMapping
     public ResponseEntity<Long> novoPagamento(@RequestBody PagamentoJson pagamentoJson) {
-        Pagamento pagamento = new Pagamento(pagamentoJson.valorTotal(), pagamentoJson.nome(), pagamentoJson.cpf(), pagamentoJson.endereco());
+        Pagamento pagamento = new Pagamento(pagamentoJson.valorTotal(),
+                pagamentoJson.pagamento().numeroCartao(),
+                pagamentoJson.pagamento().cvv(),
+                pagamentoJson.pagamento().dataVencimento(),
+                pagamentoJson.nome(),
+                pagamentoJson.cpf(),
+                pagamentoJson.endereco());
         return ResponseEntity.status(HttpStatus.CREATED).body(efetuarPagamentoUseCase.efetuar(pagamento));
     }
 

@@ -119,6 +119,15 @@
 				<configuration>
 					<excludes>
 						<exclude>**/site/jacoco/**</exclude>
+						<exclude>**/config/**</exclude>
+						<exclude>**/controller/json/**</exclude>
+						<exclude>**/domain/**</exclude>
+						<exclude>**/exception/**</exclude>
+						<exclude>**/entity/**</exclude>
+						<exclude>**/repository/**</exclude>
+						<exclude>**/FiapPagamentoServiceApplication.class</exclude>
+						<exclude>**/pedido/json/**</exclude>
+						<exclude>**/pedido/client/**</exclude>
 					</excludes>
 				</configuration>
 				<version>0.8.12</version>

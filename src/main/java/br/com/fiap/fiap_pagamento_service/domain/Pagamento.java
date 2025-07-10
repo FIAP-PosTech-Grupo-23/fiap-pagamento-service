@@ -13,6 +13,9 @@ public class Pagamento {
 
     private Long id;
     private BigDecimal valor;
+    private String numeroCartao;
+    private String cvv;
+    private String dataVencimento;
     private String nomeCobranca;
     private String cpfCobranca;
     private String enderecoCobranca;
@@ -20,11 +23,22 @@ public class Pagamento {
     @Setter
     private UUID idSistemaExterno;
 
-    public Pagamento(BigDecimal valor, String nomeCobranca, String cpfCobranca, String enderecoCobranca) {
+    public Pagamento(BigDecimal valor, String numeroCartao, String cvv, String dataVencimento, String nomeCobranca, String cpfCobranca, String enderecoCobranca) {
         this.valor = valor;
+        this.numeroCartao = numeroCartao;
+        this.cvv = cvv;
+        this.dataVencimento = dataVencimento;
         this.nomeCobranca = nomeCobranca;
         this.cpfCobranca = cpfCobranca;
         this.enderecoCobranca = enderecoCobranca;
     }
 
+    public Pagamento(Long id, BigDecimal valor, String nomeCobranca, String cpfCobranca, String enderecoCobranca, UUID idSistemaExterno) {
+        this.id = id;
+        this.valor = valor;
+        this.nomeCobranca = nomeCobranca;
+        this.cpfCobranca = cpfCobranca;
+        this.enderecoCobranca = enderecoCobranca;
+        this.idSistemaExterno = idSistemaExterno;
+    }
 }
