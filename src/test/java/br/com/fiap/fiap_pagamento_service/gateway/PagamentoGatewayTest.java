@@ -1,6 +1,7 @@
 package br.com.fiap.fiap_pagamento_service.gateway;
 
 import br.com.fiap.fiap_pagamento_service.domain.Pagamento;
+import br.com.fiap.fiap_pagamento_service.exception.PagamentoNaoExistenteException;
 import br.com.fiap.fiap_pagamento_service.gateway.database.jpa.PagamentoGatewayImpl;
 import br.com.fiap.fiap_pagamento_service.gateway.database.jpa.entity.PagamentoEntity;
 import br.com.fiap.fiap_pagamento_service.gateway.database.jpa.repository.PagamentoRepository;
@@ -96,6 +97,21 @@ class PagamentoGatewayTest {
 
         // Assert
         assertEquals(pagamentoResponse.getIdSistemaExterno(), idSistemaExterno);
+    }
+
+    @Test
+    void shouldThrowPagamentoNaoExistenteException() {
+
+        // Arrange
+        UUID idSistemaExterno = UUID.randomUUID();
+        pagamento.setIdSistemaExterno(idSistemaExterno);
+
+        Optional<PagamentoEntity> pagamentoEntityOptional = Optional.empty();
+
+        doReturn(pagamentoEntityOptional).when(pagamentoRepository).getByIdSistemaExterno(idSistemaExterno);
+
+        // Act + Assert
+        assertThrows(PagamentoNaoExistenteException.class, () -> pagamentoGateway.buscaPorIdSistemaExterno(idSistemaExterno));
     }
 
 }
